@@ -6,7 +6,7 @@ export const handler = async (event) => {
     return { statusCode: 405, body: { error: "Method not allowed" } };
   }
 
-  const authSuccess = await authenticate(event.headers?.authorization);
+  const authSuccess = await authenticate(event.headers?.authorization || "");
   if (!authSuccess) {
     return { statusCode: 401, body: { error: "Authentication failed" } };
   }
