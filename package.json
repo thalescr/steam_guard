@@ -1,0 +1,17 @@
+{
+  "name": "steam_guard_lambda",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test",
+    "zip": "zip -r9 lambda.zip . -x ./.* -x *.git* -x package-lock.json -x *.test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "jsonwebtoken": "^9.0.2",
+    "steam-totp": "^2.1.2"
+  }
+}
