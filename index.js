@@ -1,5 +1,6 @@
 import authenticate from "./services/authentication.js";
 import { generateCode } from "./services/steamGuard.js";
+import credentials from "./services/credentials.js";
 
 export const handler = async (event) => {
   if (event.requestContext.http.method !== "POST") {
@@ -18,12 +19,14 @@ export const handler = async (event) => {
     return { statusCode: 400, body: { error: "Bad request" } };
   }
 
-  const missingKey = ["secret"].find((key) => !parsed[key]);
+  const { account_id } = parsed;
+
+  const missingKey = ["account_id"].find((key) => !parsed[key]);
   if (missingKey) {
     return { statusCode: 400, body: { error: `Missing ${missingKey} param` } };
   }
 
-  const { secret } = parsed;
+  const secret = account_id in credentials ? credentials[account_id] : null;
 
   try {
     return {

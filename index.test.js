@@ -54,6 +54,6 @@ test("required params", async (t) => {
   };
   assert.deepEqual(await handler(request), {
     statusCode: 400,
-    body: { error: "Missing secret param" },
+    body: { error: "Missing account_id param" },
   });
 });
