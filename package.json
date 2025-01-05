@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "totp": "node --env-file=.env totp.js",
     "test": "node --test",
     "zip": "zip -r9 lambda.zip . -x ./.* -x *.git* -x package-lock.json -x *.test.js"
   },
